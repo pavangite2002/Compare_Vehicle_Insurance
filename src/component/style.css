@@ -1,0 +1,80 @@
+/* Add your custom styles here */
+
+
+.navbar {
+    background-color: #343a40;
+  }
+  .nav-link {
+    color: rgb(221, 24, 24);
+  }
+  .display-4{
+    color:lightskyblue;
+    font: italic;
+  }
+  .custom-header {
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  .custom-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  .App-header {
+    /* background-color: deeppink;
+    text-decoration:solid ; */
+    background-image: url("/src/images/home12.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  } 
+  
+body{
+    background-image: url("/src/images/home12.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background: #bdc3c7;
+    background: -webkit-linear-gradient(to right, #69d161, #bdc3c7);  
+    background: linear-gradient(to right, #6bdb7f, #bdc3c7);  */
+}
+
+.form{
+    background-color: white;
+    border-radius: 5px;
+    width: 550px;
+    margin: 20px auto;
+    padding: 20px;
+    /* height: 600px; */
+}
+
+.form-body{
+    text-align: left;
+    padding: 20px 10px;
+}
+
+.form-body > *{
+    padding: 5px;
+}
+
+.form__label{
+    width: 40%;
+}
+
+.form_input{
+    width: 60%;
+}
+
+.footer{
+    text-align: center;
+}
+.main-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+  }
+
+  

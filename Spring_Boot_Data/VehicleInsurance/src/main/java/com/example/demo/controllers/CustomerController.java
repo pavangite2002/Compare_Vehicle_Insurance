@@ -1,0 +1,42 @@
+package com.example.demo.controllers;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Customer;
+import com.example.demo.entities.Dummy_Cust_Vehi;
+import com.example.demo.servises.CustomerService;
+import com.example.demo.servises.LoginService;
+import com.example.demo.servises.VehicleInfoService;
+
+
+@RestController
+@CrossOrigin(origins="http://localhost:3000")
+public class CustomerController {
+
+	@Autowired
+	CustomerService cser;
+	
+	@Autowired
+	VehicleInfoService vinfoser;
+	
+	@Autowired
+	LoginService lser;
+	
+	@GetMapping("/getAllCustomers")
+	public List<Customer> getAllCustomers(){
+		return cser.getAllCustomers();
+	}
+	
+	@PostMapping("/registerascustomer")
+	public void saveCustomer(@RequestBody Dummy_Cust_Vehi dcvc) {
+		 cser.save(dcvc);
+	}
+	
+	
+}
