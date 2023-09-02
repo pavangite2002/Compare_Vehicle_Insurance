@@ -1,0 +1,107 @@
+import React, { useReducer, useState } from 'react';
+import './style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link, useNavigate } from 'react-router-dom';
+
+function RegisteCompany() {
+  const init = {
+    brand_name: '',
+    model: '',
+    // ... other initial fields
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'update':
+        return { ...state, [action.fld]: action.val };
+      case 'reset':
+        return init;
+      default:
+        return state;
+    }
+  };
+
+  const [info, dispatch] = useReducer(reducer, init);
+  const [msg, setMsg] = useState('');
+  const navigate = useNavigate();
+
+  // ... other validation and functions
+
+  const [models, setModels] = useState([]);
+
+  const handleBrandChange = (e) => {
+    const selectedBrand = e.target.value;
+    dispatch({ type: 'update', fld: 'brand_name', val: selectedBrand });
+
+    // Example models data based on selected brand
+    if (selectedBrand === 'Toyota') {
+      setModels(['Corolla', 'Camry', 'RAV4']);
+    } else if (selectedBrand === 'Honda') {
+      setModels(['Civic', 'Accord', 'CR-V']);
+    } else {
+      setModels([]);
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center mt-5">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h3 className="card-title text-center">Vehicle Information</h3>
+              <form>
+                <div className="mb-3">
+                  <label htmlFor="brand_name" className="form-label">
+                    Brand Name:
+                  </label>
+                  <select
+                    className="form-control"
+                    id="brand_name"
+                    name="brand_name"
+                    value={info.brand_name}
+                    onChange={handleBrandChange}
+                  >
+                    <option value="">Select Brand Name</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Honda">Honda</option>
+                    {/* ... other brand options */}
+                  </select>
+                  <div className="error-msg">{info.brand_name.error}</div>
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="model" className="form-label">
+                    Model:
+                  </label>
+                  <select
+                    className="form-control"
+                    id="model"
+                    name="model"
+                    value={info.model}
+                    onChange={(e) => handleChange("model", e.target.value)}
+                  >
+                    <option value="">Select Model</option>
+                    {models.map((model) => (
+                      <option key={model} value={model}>
+                        {model}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="error-msg">{info.model.error}</div>
+                </div>
+
+                {/* ... other form fields */}
+              </form>
+              <div className="footer">
+                {/* ... buttons and error messages */}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export { RegisteCompany };
