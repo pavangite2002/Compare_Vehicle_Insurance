@@ -1,0 +1,30 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import com.example.demo.entity.PlanEntity;
+import com.example.demo.repos.PlanRepos;
+
+@Service
+public class PlanServices {
+
+	@Autowired
+	PlanRepos prepos;
+	public PlanEntity savePlanDetails(PlanEntity p)
+	{
+		
+		PlanEntity pt=new PlanEntity(p.getPlan_name(),p.getDescription(),p.getDuration(),p.getCoverage_type(),p.getPremium_amount(),p.getCompany());
+
+		return prepos.save(pt);	
+	}
+	public List<PlanEntity> getPlanDetails()
+	{
+		return prepos.findAll();
+		//return prepos.getCompanyName();
+	}
+	
+}

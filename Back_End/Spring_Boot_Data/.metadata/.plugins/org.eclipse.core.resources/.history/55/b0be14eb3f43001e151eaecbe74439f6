@@ -1,0 +1,29 @@
+package com.example.demo.entities;
+
+@Entity
+@Table(name = "policy_details")
+public class Policy_Details {
+
+	
+	
+
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    @Column(name = "policy_id")
+	    private Long policyId;
+
+	    @ManyToOne
+	    @JoinColumn(name = "plan_id")
+	    private Plan plan;
+
+	    @ManyToOne
+	    @JoinColumn(name = "cust_id")
+	    private Customer customer;
+
+	    @Column(name = "status", columnDefinition = "INT DEFAULT 0")
+	    private int status;
+
+	    // getters and setters
+	}
+
+}
