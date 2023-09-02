@@ -1,0 +1,121 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "plan")
+public class PlanEntity
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	int plan_id; 
+	@Column
+	String plan_name;
+	@Column
+	String description;
+	@Column
+	int duration;
+	@Column
+	String coverage_type;
+	@Column
+	double premium_amount;
+	
+	@ManyToOne
+    @JoinColumn(name = "comp_id") 
+    Company company;
+
+	public PlanEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public PlanEntity(int plan_id, String plan_name, String description, int duration, String coverage_type,
+			double premium_amount, CompanyEntity company) {
+		super();
+		this.plan_id = plan_id;
+		this.plan_name = plan_name;
+		this.description = description;
+		this.duration = duration;
+		this.coverage_type = coverage_type;
+		this.premium_amount = premium_amount;
+		this.company = company;
+	}
+
+	
+	public PlanEntity(String plan_name, String description, int duration, String coverage_type, double premium_amount,
+			Company company) {
+		super();
+		this.plan_name = plan_name;
+		this.description = description;
+		this.duration = duration;
+		this.coverage_type = coverage_type;
+		this.premium_amount = premium_amount;
+		this.company = company;
+	}
+
+	public int getPlan_id() {
+		return plan_id;
+	}
+
+	public void setPlan_id(int plan_id) {
+		this.plan_id = plan_id;
+	}
+
+	public String getPlan_name() {
+		return plan_name;
+	}
+
+	public void setPlan_name(String plan_name) {
+		this.plan_name = plan_name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public String getCoverage_type() {
+		return coverage_type;
+	}
+
+	public void setCoverage_type(String coverage_type) {
+		this.coverage_type = coverage_type;
+	}
+
+	public double getPremium_amount() {
+		return premium_amount;
+	}
+
+	public void setPremium_amount(double premium_amount) {
+		this.premium_amount = premium_amount;
+	}
+
+	public CompanyEntity getCompany() {
+		return company;
+	}
+
+	public void setCompany(CompanyEntity company) {
+		this.company = company;
+	}
+
+	
+    
+}

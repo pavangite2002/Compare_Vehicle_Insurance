@@ -1,0 +1,70 @@
+package com.example.demo.entities;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table(name = "policy_details")
+public class Policy_Details {
+
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    
+	    private int policy_Id;
+
+	    @OneToOne
+	    @JoinColumn(name = "plan_id")
+	    private PlanEntity plan;
+
+	    @OneToOne
+	    @JoinColumn(name = "cust_id")
+	    private Customer customer;
+
+	    
+		public Policy_Details() {
+			super();
+		}
+
+		public Policy_Details(PlanEntity plan, Customer customer) {
+			super();
+			this.plan = plan;
+			this.customer = customer;
+		}
+
+		public int getPolicy_Id() {
+			return policy_Id;
+		}
+
+		public void setPolicy_Id(int policy_Id) {
+			this.policy_Id = policy_Id;
+		}
+
+		public PlanEntity getPlan() {
+			return plan;
+		}
+
+		public void setPlan(PlanEntity plan) {
+			this.plan = plan;
+		}
+
+		public Customer getCustomer() {
+			return customer;
+		}
+
+		public void setCustomer(Customer customer) {
+			this.customer = customer;
+		}
+
+	    
+	   
+
+}
+
+
